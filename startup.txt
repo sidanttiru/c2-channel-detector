@@ -1,0 +1,3 @@
+navigate to project directory
+run: ./venv/Scripts/Activate.ps1
+when done, type deactivate into terminal
