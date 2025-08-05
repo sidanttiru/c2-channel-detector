@@ -1,12 +1,10 @@
-# final_test.py (Definitive Version)
-
 import math
 from collections import Counter
 from scapy.all import IP, UDP, DNS, DNSQR
 
 print("--- SCRIPT STARTED ---")
 
-# --- Part 1: The Diagnostic Functions ---
+#--- Part 1: Diagnostic Functions ---
 
 DNS_LENGTH_THRESHOLD = 100
 DNS_ENTROPY_THRESHOLD = 3.2
@@ -44,18 +42,17 @@ def analyze_dns_diagnostic(packet):
     else:
         print("  [DEBUG] Packet is NOT a standard DNS query. Skipping analysis.")
 
-# --- Part 2: The Test Runner with EXPLICIT packet creation ---
+#--- Part 2: Test Run with explicit packet creation ---
 
 def run_diagnostic_test():
     print("--- Running Definitive Diagnostic Test ---")
 
     malicious_qname = "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6.malicious.com"
     
-    # --- THE FIX IS HERE ---
-    # We are now explicitly setting the opcode and ancount fields.
+    #Explicity set opcode and ancount fields
     malicious_packet = IP() / UDP() / DNS(
-        opcode=0,      # Explicitly set to STANDARD QUERY
-        ancount=0,     # Explicitly set to 0 answers
+        opcode=0,     
+        ancount=0,     
         qd=DNSQR(qname=malicious_qname)
     )
     # -----------------------
